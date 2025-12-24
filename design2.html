@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mitski Experience | SOUND WAVES</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@400;700;900&family=Libre+Baskerville:ital@0;1&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --neon-red: #ff0040;
+            --glow-red: #ff0040;
+            --black: #0a0a0a;
+        }
+
+        body {
+            background: var(--black);
+            color: white;
+            font-family: 'Space Mono', monospace;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background: 
+                radial-gradient(circle at 30% 40%, rgba(255, 0, 64, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 70% 60%, rgba(255, 0, 64, 0.15) 0%, transparent 50%);
+            animation: heartbeat 4s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.05); }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            padding: 3rem 2rem;
+            text-align: center;
+            border-bottom: 2px solid var(--neon-red);
+            box-shadow: 0 0 30px rgba(255, 0, 64, 0.5);
+        }
+
+        .artist-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 5rem;
+            color: var(--neon-red);
+            text-shadow: 
+                0 0 10px var(--glow-red),
+                0 0 20px var(--glow-red),
+                0 0 40px var(--glow-red);
+            letter-spacing: 0.5rem;
+            animation: fadeInOut 3s ease-in-out infinite;
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        /* Music Player */
+        .music-player {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 100;
+            background: rgba(10, 10, 10, 0.95);
+            border: 2px solid var(--neon-red);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(255, 0, 64, 0.6);
+            backdrop-filter: blur(10px);
+        }
+
+        .now-playing {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--neon-red);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .song-title {
+            font-size: 1.2rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        /* Content Grid */
+        .content-grid {
+            padding: 4rem 2rem;
+            max-width: 1600px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+
+        .content-box {
+            background: rgba(26, 26, 26, 0.8);
+            border: 2px solid var(--neon-red);
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 0 30px rgba(255, 0, 64, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: 300px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .content-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent,
+                rgba(255, 0, 64, 0.1),
+                transparent
+            );
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+
+        .content-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 50px rgba(255, 0, 64, 0.6);
+        }
+
+        .content-box.large {
+            grid-column: span 2;
+        }
+
+        .quote-text {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2rem;
+            font-style: italic;
+            line-height: 1.5;
+            color: white;
+            z-index: 1;
+            text-shadow: 0 0 10px var(--glow-red);
+        }
+
+        .album-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            color: var(--neon-red);
+            z-index: 1;
+            letter-spacing: 0.2rem;
+            text-shadow: 0 0 20px var(--glow-red);
+        }
+
+        .icon-display {
+            font-size: 6rem;
+            z-index: 1;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .lyric-highlight {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            color: var(--neon-red);
+            z-index: 1;
+            letter-spacing: 0.1rem;
+            text-shadow: 0 0 30px var(--glow-red);
+        }
+
+        /* Particles effect */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: var(--neon-red);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: rise 10s linear infinite;
+        }
+
+        @keyframes rise {
+            0% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
+
+        .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 20%; animation-delay: 2s; }
+        .particle:nth-child(3) { left: 30%; animation-delay: 4s; }
+        .particle:nth-child(4) { left: 40%; animation-delay: 1s; }
+        .particle:nth-child(5) { left: 50%; animation-delay: 3s; }
+        .particle:nth-child(6) { left: 60%; animation-delay: 5s; }
+        .particle:nth-child(7) { left: 70%; animation-delay: 2s; }
+        .particle:nth-child(8) { left: 80%; animation-delay: 4s; }
+        .particle:nth-child(9) { left: 90%; animation-delay: 1s; }
+
+        /* Footer */
+        footer {
+            padding: 2rem;
+            text-align: center;
+            border-top: 2px solid var(--neon-red);
+            box-shadow: 0 0 20px rgba(255, 0, 64, 0.5);
+            background: var(--black);
+            margin-top: 4rem;
+        }
+
+        .credits {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            color: var(--neon-red);
+            font-weight: 700;
+            text-shadow: 0 0 10px var(--glow-red);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 1rem 2rem;
+            border: 2px solid var(--neon-red);
+            color: var(--neon-red);
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: var(--neon-red);
+            color: black;
+            box-shadow: 0 0 20px var(--glow-red);
+        }
+
+        @media (max-width: 1024px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            .content-box.large {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+
+    <!-- Particles -->
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <div class="container">
+        <header class="header">
+            <h1 class="artist-title">MITSKI</h1>
+        </header>
+
+        <!-- Music Player -->
+        <div class="music-player">
+            <div class="now-playing">♫ NOW PLAYING ♫</div>
+            <div class="song-title">Washing Machine Heart - Mitski</div>
+            <iframe width="300" height="80" 
+                    src="https://www.youtube.com/embed/-047ko4v05s?autoplay=1&loop=1&playlist=-047ko4v05s" 
+                    frameborder="0" 
+                    allow="autoplay; encrypted-media" 
+                    allowfullscreen>
+            </iframe>
+        </div>
+
+        <div class="content-grid">
+            <div class="content-box large">
+                <p class="quote-text">"Toss your dirty shoes in my washing machine heart"</p>
+            </div>
+
+            <div class="content-box">
+                <div class="icon-display">🌙</div>
+            </div>
+
+            <div class="content-box">
+                <p class="album-title">BE THE COWBOY</p>
+            </div>
+
+            <div class="content-box">
+                <p class="lyric-highlight">BABY, THOUGH I'VE CLOSED MY EYES</p>
+            </div>
+
+            <div class="content-box">
+                <div class="icon-display">💔</div>
+            </div>
+
+            <div class="content-box large">
+                <p class="quote-text">"I know who I am when I'm alone"</p>
+            </div>
+
+            <div class="content-box">
+                <p class="album-title">PUBERTY 2</p>
+            </div>
+
+            <div class="content-box large">
+                <p class="lyric-highlight">I'M GIVING IT MY ALL</p>
+            </div>
+
+            <div class="content-box">
+                <div class="icon-display">🎵</div>
+            </div>
+
+            <div class="content-box large">
+                <p class="quote-text">"Your mother wouldn't approve of how my mother raised me"</p>
+            </div>
+
+            <div class="content-box">
+                <p class="album-title">LAUREL HELL</p>
+            </div>
+        </div>
+
+        <footer>
+            <div class="credits">That's us.</div>
+            <a href="musician2.html" class="back-link">← BACK TO INFO</a>
+        </footer>
+    </div>
+</body>
+</html>
