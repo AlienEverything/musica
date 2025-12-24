@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billie Eilish | SOUND WAVES</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --neon-red: #ff0040;
+            --glow-red: #ff0040;
+            --black: #0a0a0a;
+            --dark-gray: #1a1a1a;
+        }
+
+        body {
+            background: var(--black);
+            color: white;
+            font-family: 'Space Mono', monospace;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            padding: 2rem 0;
+            text-align: center;
+            border-bottom: 2px solid var(--neon-red);
+            box-shadow: 0 0 20px rgba(255, 0, 64, 0.5);
+            margin-bottom: 3rem;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            color: var(--neon-red);
+            text-shadow: 0 0 10px var(--glow-red);
+            text-decoration: none;
+        }
+
+        .artist-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .artist-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4rem;
+            color: var(--neon-red);
+            text-shadow: 
+                0 0 10px var(--glow-red),
+                0 0 20px var(--glow-red),
+                0 0 40px var(--glow-red);
+            letter-spacing: 0.3rem;
+            margin-bottom: 1rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        .artist-genre {
+            font-size: 1.5rem;
+            color: white;
+            opacity: 0.7;
+            letter-spacing: 0.2rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .info-box {
+            background: var(--dark-gray);
+            border: 2px solid var(--neon-red);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 0 20px rgba(255, 0, 64, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .info-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 30px rgba(255, 0, 64, 0.6);
+        }
+
+        .info-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            color: var(--neon-red);
+            margin-bottom: 1rem;
+            letter-spacing: 0.1rem;
+        }
+
+        .info-text {
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .bio-section {
+            background: var(--dark-gray);
+            border: 2px solid var(--neon-red);
+            border-radius: 10px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 0 20px rgba(255, 0, 64, 0.3);
+        }
+
+        .section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            color: var(--neon-red);
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.2rem;
+        }
+
+        .bio-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .albums-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .album-item {
+            background: rgba(255, 0, 64, 0.1);
+            border: 1px solid var(--neon-red);
+            padding: 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .album-item:hover {
+            background: rgba(255, 0, 64, 0.2);
+            transform: scale(1.05);
+        }
+
+        .album-year {
+            color: var(--neon-red);
+            font-weight: 700;
+        }
+
+        .achievements {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .achievement {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255, 0, 64, 0.1);
+            border: 1px solid var(--neon-red);
+            border-radius: 10px;
+        }
+
+        .achievement-icon {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .achievement-text {
+            font-size: 0.9rem;
+            color: white;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin: 4rem 0;
+        }
+
+        .design-button {
+            display: inline-block;
+            padding: 1.5rem 3rem;
+            background: transparent;
+            border: 3px solid var(--neon-red);
+            color: var(--neon-red);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(255, 0, 64, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .design-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--neon-red);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .design-button:hover::before {
+            left: 0;
+        }
+
+        .design-button:hover {
+            color: black;
+            box-shadow: 
+                0 0 30px var(--glow-red),
+                0 0 60px var(--glow-red);
+        }
+
+        footer {
+            padding: 2rem;
+            text-align: center;
+            border-top: 2px solid var(--neon-red);
+            box-shadow: 0 0 20px rgba(255, 0, 64, 0.5);
+            background: var(--dark-gray);
+            margin-top: 4rem;
+        }
+
+        .credits {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            color: var(--neon-red);
+            font-weight: 700;
+            text-shadow: 0 0 10px var(--glow-red);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="cards.html" class="logo">← BACK TO ARTISTS</a>
+        </header>
+
+        <div class="artist-header">
+            <h1 class="artist-name">BILLIE EILISH</h1>
+            <p class="artist-genre">POP • ELECTROPOP • ALTERNATIVE</p>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-box">
+                <h3 class="info-title">ORIGIN</h3>
+                <p class="info-text">Los Angeles, California, USA</p>
+            </div>
+            <div class="info-box">
+                <h3 class="info-title">REAL NAME</h3>
+                <p class="info-text">Billie Eilish Pirate Baird O'Connell</p>
+            </div>
+            <div class="info-box">
+                <h3 class="info-title">BORN</h3>
+                <p class="info-text">December 18, 2001</p>
+            </div>
+        </div>
+
+        <div class="bio-section">
+            <h2 class="section-title">THE STORY</h2>
+            <p class="bio-text">
+                Billie Eilish didn't just break into the music industry—she shattered it. At just 13 years old, she uploaded "Ocean Eyes" 
+                to SoundCloud, and the world immediately took notice. What started as a bedroom project with her brother FINNEAS became a 
+                global phenomenon that would redefine what pop music could be in the 21st century.
+            </p>
+            <p class="bio-text">
+                Her whisper-soft vocals paired with dark, haunting production created a sound unlike anything else on the radio. Billie 
+                didn't conform to pop music's expectations—she made pop conform to her. With songs like "Bad Guy," "Bury a Friend," and 
+                "When the Party's Over," she proved that vulnerability and darkness could coexist with commercial success.
+            </p>
+            <p class="bio-text">
+                In 2020, at just 18 years old, Billie became the youngest artist to win all four major Grammy categories in the same year 
+                (Album of the Year, Record of the Year, Song of the Year, and Best New Artist). Her debut album "WHEN WE ALL FALL ASLEEP, 
+                WHERE DO WE GO?" wasn't just a commercial success—it was a cultural reset. She followed it up with "Happier Than Ever," 
+                an even more introspective and powerful statement.
+            </p>
+            <p class="bio-text">
+                Beyond the music, Billie has become a voice for her generation. She's unapologetically herself, speaking openly about 
+                mental health, body image, and the pressures of fame. Her style—oversized clothes, neon hair, chains—became iconic, 
+                challenging beauty standards and inspiring millions. Billie Eilish isn't just an artist—she's a movement, and she's 
+                only getting started.
+            </p>
+        </div>
+
+        <div class="bio-section">
+            <h2 class="section-title">ALBUMS & ACHIEVEMENTS</h2>
+            <ul class="albums-list">
+                <li class="album-item"><span class="album-year">2017</span> - Don't Smile at Me (EP)</li>
+                <li class="album-item"><span class="album-year">2019</span> - WHEN WE ALL FALL ASLEEP, WHERE DO WE GO?</li>
+                <li class="album-item"><span class="album-year">2021</span> - Happier Than Ever</li>
+                <li class="album-item"><span class="album-year">2024</span> - HIT ME HARD AND SOFT</li>
+            </ul>
+        </div>
+
+        <div class="bio-section">
+            <h2 class="section-title">ACCOLADES</h2>
+            <div class="achievements">
+                <div class="achievement">
+                    <div class="achievement-icon">🏆</div>
+                    <div class="achievement-text">9 Grammy Awards</div>
+                </div>
+                <div class="achievement">
+                    <div class="achievement-icon">🎬</div>
+                    <div class="achievement-text">Academy Award (Best Original Song)</div>
+                </div>
+                <div class="achievement">
+                    <div class="achievement-icon">🌍</div>
+                    <div class="achievement-text">2 Golden Globe Awards</div>
+                </div>
+                <div class="achievement">
+                    <div class="achievement-icon">💿</div>
+                    <div class="achievement-text">Multiple Billboard #1 hits</div>
+                </div>
+                <div class="achievement">
+                    <div class="achievement-icon">⭐</div>
+                    <div class="achievement-text">Youngest artist to win all 4 major Grammys</div>
+                </div>
+                <div class="achievement">
+                    <div class="achievement-icon">🎵</div>
+                    <div class="achievement-text">TIME's "Entertainer of the Year"</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <a href="design4.html" class="design-button">🎵 Experience The Vibe 🎵</a>
+        </div>
+
+        <footer>
+            <div class="credits">That's us.</div>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chris Grey | SOUND WAVES</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --neon-red: #ff0040;
+            --glow-red: #ff0040;
+            --black: #0a0a0a;
+            --dark-gray: #1a1a1a;
+        }
+
+        body {
+            background: var(--black);
+            color: white;
+            font-family: 'Space Mono', monospace;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            padding: 2rem 0;
+            text-align: center;
+            border-bottom: 2px solid var(--neon-red);
+            box-shadow: 0 0 20px rgba(255, 0, 64, 0.5);
+            margin-bottom: 3rem;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            color: var(--neon-red);
+            text-shadow: 0 0 10px var(--glow-red);
+            text-decoration: none;
+        }
+
+        .artist-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .artist-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4rem;
+            color: var(--neon-red);
+            text-shadow: 
+                0 0 10px var(--glow-red),
+                0 0 20px var(--glow-red),
+                0 0 40px var(--glow-red);
+            letter-spacing: 0.3rem;
+            margin-bottom: 1rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        .artist-genre {
+            font-size: 1.5rem;
+            color: white;
+            opacity: 0.7;
+            letter-spacing: 0.2rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .info-box {
+            background: var(--dark-gray);
+            border: 2px solid var(--neon-red);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 0 20px rgba(255, 0, 64, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .info-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 30px rgba(255, 0, 64, 0.6);
+        }
+
+        .info-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            color: var(--neon-red);
+            margin-bottom: 1rem;
+            letter-spacing: 0.1rem;
+        }
+
+        .info-text {
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .bio-section {
+            background: var(--dark-gray);
+            border: 2px solid var(--neon-red);
+            border-radius: 10px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 0 20px rgba(255, 0, 64, 0.3);
+        }
+
+        .section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            color: var(--neon-red);
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.2rem;
+        }
+
+        .bio-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .hit-songs {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .song-item {
+            background: rgba(255, 0, 64, 0.1);
+            border: 1px solid var(--neon-red);
+            padding: 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .song-item:hover {
+            background: rgba(255, 0, 64, 0.2);
+            transform: scale(1.05);
+        }
+
+        .cta-section {
+            text-align: center;
+            margin: 4rem 0;
+        }
+
+        .design-button {
+            display: inline-block;
+            padding: 1.5rem 3rem;
+            background: transparent;
+            border: 3px solid var(--neon-red);
+            color: var(--neon-red);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(255, 0, 64, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .design-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--neon-red);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .design-button:hover::before {
+            left: 0;
+        }
+
+        .design-button:hover {
+            color: black;
+            box-shadow: 
+                0 0 30px var(--glow-red),
+                0 0 60px var(--glow-red);
+        }
+
+        footer {
+            padding: 2rem;
+            text-align: center;
+            border-top: 2px solid var(--neon-red);
+            box-shadow: 0 0 20px rgba(255, 0, 64, 0.5);
+            background: var(--dark-gray);
+            margin-top: 4rem;
+        }
+
+        .credits {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            color: var(--neon-red);
+            font-weight: 700;
+            text-shadow: 0 0 10px var(--glow-red);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="cards.html" class="logo">← BACK TO ARTISTS</a>
+        </header>
+
+        <div class="artist-header">
+            <h1 class="artist-name">CHRIS GREY</h1>
+            <p class="artist-genre">DARK POP • ALTERNATIVE • ELECTRONIC</p>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-box">
+                <h3 class="info-title">ORIGIN</h3>
+                <p class="info-text">United States</p>
+            </div>
+            <div class="info-box">
+                <h3 class="info-title">GENRE</h3>
+                <p class="info-text">Dark Pop, Alternative Pop, Electronic</p>
+            </div>
+            <div class="info-box">
+                <h3 class="info-title">ACTIVE</h3>
+                <p class="info-text">2020 - Present</p>
+            </div>
+        </div>
+
+        <div class="bio-section">
+            <h2 class="section-title">THE STORY</h2>
+            <p class="bio-text">
+                Chris Grey emerged from the shadows of the music industry with a sound that's impossible to ignore. His music is dark, 
+                intense, and unapologetically emotional—a perfect soundtrack for late-night drives and moments of deep introspection. 
+                With a voice that cuts through the noise and production that feels cinematic, Chris Grey has carved out a unique space 
+                in the world of alternative pop.
+            </p>
+            <p class="bio-text">
+                His breakout hit "Let The World Burn" became a viral sensation, resonating with listeners who crave music that matches 
+                their darker emotions. The song's haunting melody and passionate lyrics captured the feeling of wanting to hold onto 
+                something—or someone—no matter what the world throws at you. It's obsessive, it's intense, and it's real.
+            </p>
+            <p class="bio-text">
+                Chris Grey doesn't follow trends—he creates them. His music blends electronic production with raw, emotional vocals, 
+                creating an atmosphere that's both modern and timeless. Each song feels like stepping into a noir film, where love is 
+                dangerous, emotions run deep, and nothing is simple. His aesthetic is sleek, mysterious, and captivating.
+            </p>
+            <p class="bio-text">
+                What makes Chris Grey stand out is his refusal to water down his vision. In an era of manufactured pop, he offers 
+                something genuine and unfiltered. His music speaks to those who feel deeply, love intensely, and aren't afraid to 
+                embrace the darkness. Chris Grey isn't just making music—he's creating an experience, a mood, a world where it's 
+                okay to feel everything all at once.
+            </p>
+        </div>
+
+        <div class="bio-section">
+            <h2 class="section-title">HIT TRACKS</h2>
+            <ul class="hit-songs">
+                <li class="song-item">Let The World Burn</li>
+                <li class="song-item">Venom</li>
+                <li class="song-item">Heartbreak Blues</li>
+                <li class="song-item">Afterlife</li>
+                <li class="song-item">Deathwish</li>
+                <li class="song-item">The Devil</li>
+                <li class="song-item">Panic</li>
+                <li class="song-item">Ghost</li>
+            </ul>
+        </div>
+
+        <div class="cta-section">
+            <a href="design3.html" class="design-button">🎵 Experience The Vibe 🎵</a>
+        </div>
+
+        <footer>
+            <div class="credits">That's us.</div>
+        </footer>
+    </div>
+</body>
+</html>

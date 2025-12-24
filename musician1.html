@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radiohead | SOUND WAVES</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --neon-red: #ff0040;
+            --glow-red: #ff0040;
+            --black: #0a0a0a;
+            --dark-gray: #1a1a1a;
+        }
+
+        body {
+            background: var(--black);
+            color: white;
+            font-family: 'Space Mono', monospace;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Header */
+        header {
+            padding: 2rem 0;
+            text-align: center;
+            border-bottom: 2px solid var(--neon-red);
+            box-shadow: 0 0 20px rgba(255, 0, 64, 0.5);
+            margin-bottom: 3rem;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            color: var(--neon-red);
+            text-shadow: 0 0 10px var(--glow-red);
+            text-decoration: none;
+        }
+
+        /* Artist Section */
+        .artist-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .artist-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4rem;
+            color: var(--neon-red);
+            text-shadow: 
+                0 0 10px var(--glow-red),
+                0 0 20px var(--glow-red),
+                0 0 40px var(--glow-red);
+            letter-spacing: 0.3rem;
+            margin-bottom: 1rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        .artist-genre {
+            font-size: 1.5rem;
+            color: white;
+            opacity: 0.7;
+            letter-spacing: 0.2rem;
+        }
+
+        /* Info Grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .info-box {
+            background: var(--dark-gray);
+            border: 2px solid var(--neon-red);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 0 20px rgba(255, 0, 64, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .info-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 30px rgba(255, 0, 64, 0.6);
+        }
+
+        .info-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            color: var(--neon-red);
+            margin-bottom: 1rem;
+            letter-spacing: 0.1rem;
+        }
+
+        .info-text {
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        /* Biography Section */
+        .bio-section {
+            background: var(--dark-gray);
+            border: 2px solid var(--neon-red);
+            border-radius: 10px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 0 20px rgba(255, 0, 64, 0.3);
+        }
+
+        .section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            color: var(--neon-red);
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.2rem;
+        }
+
+        .bio-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        /* Albums List */
+        .albums-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .album-item {
+            background: rgba(255, 0, 64, 0.1);
+            border: 1px solid var(--neon-red);
+            padding: 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .album-item:hover {
+            background: rgba(255, 0, 64, 0.2);
+            transform: scale(1.05);
+        }
+
+        .album-year {
+            color: var(--neon-red);
+            font-weight: 700;
+        }
+
+        /* CTA Button */
+        .cta-section {
+            text-align: center;
+            margin: 4rem 0;
+        }
+
+        .design-button {
+            display: inline-block;
+            padding: 1.5rem 3rem;
+            background: transparent;
+            border: 3px solid var(--neon-red);
+            color: var(--neon-red);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(255, 0, 64, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .design-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--neon-red);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .design-button:hover::before {
+            left: 0;
+        }
+
+        .design-button:hover {
+            color: black;
+            box-shadow: 
+                0 0 30px var(--glow-red),
+                0 0 60px var(--glow-red);
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem;
+            text-align: center;
+            border-top: 2px solid var(--neon-red);
+            box-shadow: 0 0 20px rgba(255, 0, 64, 0.5);
+            background: var(--dark-gray);
+            margin-top: 4rem;
+        }
+
+        .credits {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            color: var(--neon-red);
+            font-weight: 700;
+            text-shadow: 0 0 10px var(--glow-red);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="cards.html" class="logo">← BACK TO ARTISTS</a>
+        </header>
+
+        <div class="artist-header">
+            <h1 class="artist-name">RADIOHEAD</h1>
+            <p class="artist-genre">ALTERNATIVE ROCK • EXPERIMENTAL • ART ROCK</p>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-box">
+                <h3 class="info-title">ORIGIN</h3>
+                <p class="info-text">Abingdon, Oxfordshire, England</p>
+            </div>
+            <div class="info-box">
+                <h3 class="info-title">FORMED</h3>
+                <p class="info-text">1985</p>
+            </div>
+            <div class="info-box">
+                <h3 class="info-title">MEMBERS</h3>
+                <p class="info-text">Thom Yorke, Jonny Greenwood, Colin Greenwood, Ed O'Brien, Philip Selway</p>
+            </div>
+        </div>
+
+        <div class="bio-section">
+            <h2 class="section-title">THE STORY</h2>
+            <p class="bio-text">
+                Radiohead emerged from the British music scene in the early 1990s, forever changing the landscape of alternative rock. 
+                What began as a school band called "On a Friday" evolved into one of the most innovative and influential groups in modern music history.
+            </p>
+            <p class="bio-text">
+                Their breakthrough came with "Creep" in 1992, a song that captured the alienation of a generation. But Radiohead refused to be 
+                defined by one hit. Instead, they embarked on a sonic journey that would see them push the boundaries of rock music, incorporating 
+                electronic elements, orchestral arrangements, and experimental production techniques.
+            </p>
+            <p class="bio-text">
+                Albums like "OK Computer" (1997) and "Kid A" (2000) redefined what a rock band could achieve, blending dystopian themes with 
+                groundbreaking soundscapes. Radiohead's fearless approach to evolution has earned them critical acclaim, countless awards, and 
+                a devoted fanbase that spans generations.
+            </p>
+            <p class="bio-text">
+                Known for their atmospheric sound, introspective lyrics, and Thom Yorke's haunting vocals, Radiohead continues to inspire artists 
+                across all genres. They're not just musicians—they're sonic architects who challenge listeners to experience music on a deeper level.
+            </p>
+        </div>
+
+        <div class="bio-section">
+            <h2 class="section-title">ICONIC ALBUMS</h2>
+            <ul class="albums-list">
+                <li class="album-item"><span class="album-year">1993</span> - Pablo Honey</li>
+                <li class="album-item"><span class="album-year">1995</span> - The Bends</li>
+                <li class="album-item"><span class="album-year">1997</span> - OK Computer</li>
+                <li class="album-item"><span class="album-year">2000</span> - Kid A</li>
+                <li class="album-item"><span class="album-year">2001</span> - Amnesiac</li>
+                <li class="album-item"><span class="album-year">2003</span> - Hail to the Thief</li>
+                <li class="album-item"><span class="album-year">2007</span> - In Rainbows</li>
+                <li class="album-item"><span class="album-year">2011</span> - The King of Limbs</li>
+                <li class="album-item"><span class="album-year">2016</span> - A Moon Shaped Pool</li>
+            </ul>
+        </div>
+
+        <div class="cta-section">
+            <a href="design1.html" class="design-button">🎵 Experience The Vibe 🎵</a>
+        </div>
+
+        <footer>
+            <div class="credits">That's us.</div>
+        </footer>
+    </div>
+</body>
+</html>
