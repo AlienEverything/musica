@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billie Eilish Experience | SOUND WAVES</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@400;700;900&family=Archivo+Black&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --neon-red: #ff0040;
+            --glow-red: #ff0040;
+            --black: #0a0a0a;
+            --neon-green: #00ff41;
+        }
+
+        body {
+            background: var(--black);
+            color: white;
+            font-family: 'Space Mono', monospace;
+            overflow-x: hidden;
+        }
+
+        /* Atmospheric background */
+        .bg-atmosphere {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background: 
+                radial-gradient(ellipse at 50% 20%, rgba(255, 0, 64, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(0, 255, 65, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 20% 80%, rgba(255, 0, 64, 0.1) 0%, transparent 50%);
+            animation: atmospheric 8s ease-in-out infinite;
+        }
+
+        /* Background Images */
+        .bg-image {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+            border-radius: 20px;
+            filter: blur(2px);
+            z-index: 0;
+            animation: float-img 10s ease-in-out infinite;
+        }
+
+        @keyframes float-img {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(5deg); }
+        }
+
+        .bg-img-1 {
+            background-image: url('https://alieneverything.github.io/musica/b.jpg');
+            top: 15%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+
+        .bg-img-2 {
+            background-image: url('https://alieneverything.github.io/musica/bi.jpg');
+            top: 50%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .bg-img-3 {
+            background-image: url('https://alieneverything.github.io/musica/bil.jpg');
+            bottom: 10%;
+            left: 15%;
+            animation-delay: 4s;
+        }
+
+        @keyframes atmospheric {
+            0%, 100% { 
+                opacity: 0.5;
+                filter: blur(0);
+            }
+            50% { 
+                opacity: 0.8;
+                filter: blur(5px);
+            }
+        }
+
+        /* Floating orbs */
+        .orbs {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(30px);
+            animation: float-orb 15s ease-in-out infinite;
+        }
+
+        @keyframes float-orb {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.3;
+            }
+            50% {
+                transform: translate(50px, -50px) scale(1.2);
+                opacity: 0.6;
+            }
+        }
+
+        .orb:nth-child(1) {
+            width: 200px;
+            height: 200px;
+            background: var(--neon-red);
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .orb:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            background: var(--neon-green);
+            top: 60%;
+            left: 70%;
+            animation-delay: 3s;
+        }
+
+        .orb:nth-child(3) {
+            width: 180px;
+            height: 180px;
+            background: var(--neon-red);
+            top: 70%;
+            left: 20%;
+            animation-delay: 6s;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            padding: 3rem 2rem;
+            text-align: center;
+            border-bottom: 2px solid var(--neon-red);
+            box-shadow: 0 0 30px rgba(255, 0, 64, 0.5);
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+        }
+
+        .artist-title {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 5rem;
+            color: var(--neon-red);
+            text-shadow: 
+                0 0 10px var(--glow-red),
+                0 0 20px var(--glow-red),
+                0 0 40px var(--glow-red);
+            letter-spacing: 0.5rem;
+            animation: billie-glow 3s ease-in-out infinite;
+        }
+
+        @keyframes billie-glow {
+            0%, 100% { 
+                text-shadow: 
+                    0 0 10px var(--glow-red),
+                    0 0 20px var(--glow-red);
+                filter: brightness(1);
+            }
+            50% { 
+                text-shadow: 
+                    0 0 20px var(--glow-red),
+                    0 0 40px var(--glow-red),
+                    0 0 60px var(--glow-red);
+                filter: brightness(1.3);
+            }
+        }
+
+        /* Music Player */
+        .music-player {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.95);
+            border: 2px solid var(--neon-red);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(255, 0, 64, 0.6);
+            backdrop-filter: blur(10px);
+        }
+
+        .now-playing {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--neon-red);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .song-title {
+            font-size: 1.2rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        /* Mosaic Layout */
+        .mosaic {
+            padding: 4rem 2rem;
+            max-width: 1600px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(4, 250px);
+            gap: 2rem;
+        }
+
+        .mosaic-tile {
+            background: rgba(10, 10, 10, 0.8);
+            border: 2px solid var(--neon-red);
+            border-radius: 15px;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(255, 0, 64, 0.3);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .mosaic-tile::before {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: -100%;
+            width: 300%;
+            height: 300%;
+            background: radial-gradient(circle, rgba(255, 0, 64, 0.2) 0%, transparent 70%);
+            animation: glow-rotate 5s linear infinite;
+        }
+
+        @keyframes glow-rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .mosaic-tile:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(255, 0, 64, 0.6);
+            border-color: var(--neon-green);
+        }
+
+        .tile-large {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .tile-tall {
+            grid-row: span 2;
+        }
+
+        .tile-wide {
+            grid-column: span 2;
+        }
+
+        .lyric-text {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            line-height: 1.2;
+            color: white;
+            z-index: 1;
+            text-shadow: 0 0 20px var(--glow-red);
+        }
+
+        .lyric-text.large {
+            font-size: 3.5rem;
+        }
+
+        .lyric-text.emphasis {
+            color: var(--neon-red);
+        }
+
+        .icon-display {
+            font-size: 6rem;
+            z-index: 1;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .album-display {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            color: var(--neon-red);
+            z-index: 1;
+            letter-spacing: 0.2rem;
+            text-shadow: 0 0 20px var(--glow-red);
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem;
+            text-align: center;
+            border-top: 2px solid var(--neon-red);
+            box-shadow: 0 0 20px rgba(255, 0, 64, 0.5);
+            background: rgba(0, 0, 0, 0.8);
+            margin-top: 4rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .credits {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            color: var(--neon-red);
+            font-weight: 700;
+            text-shadow: 0 0 10px var(--glow-red);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 1rem 2rem;
+            border: 2px solid var(--neon-red);
+            color: var(--neon-red);
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: var(--neon-red);
+            color: black;
+            box-shadow: 0 0 20px var(--glow-red);
+        }
+
+        @media (max-width: 1024px) {
+            .mosaic {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: auto;
+            }
+            .tile-large, .tile-tall, .tile-wide {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mosaic {
+                grid-template-columns: 1fr;
+            }
+            .artist-title {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-atmosphere"></div>
+
+    <!-- Background Images -->
+    <div class="bg-image bg-img-1"></div>
+    <div class="bg-image bg-img-2"></div>
+    <div class="bg-image bg-img-3"></div>
+
+    <!-- Floating orbs -->
+    <div class="orbs">
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
+    </div>
+
+    <div class="container">
+        <header class="header">
+            <h1 class="artist-title">BILLIE EILISH</h1>
+        </header>
+
+        <!-- Music Player -->
+        <div class="music-player">
+            <div class="now-playing">♫ NOW PLAYING ♫</div>
+            <div class="song-title">The 30th - Billie Eilish</div>
+            <iframe width="300" height="80" 
+                    src="https://www.youtube.com/embed/KyJEF0AZ2NU?autoplay=1&loop=1&playlist=KyJEF0AZ2NU" 
+                    frameborder="0" 
+                    allow="autoplay; encrypted-media" 
+                    allowfullscreen>
+            </iframe>
+        </div>
+
+        <div class="mosaic">
+            <div class="mosaic-tile tile-large">
+                <p class="lyric-text large emphasis">SOMETHING BAD IS 'BOUT TO HAPPEN TO ME</p>
+            </div>
+
+            <div class="mosaic-tile" style="background-image: url('https://alieneverything.github.io/musica/b.jpg'); background-size: cover; background-position: center;">
+            </div>
+
+            <div class="mosaic-tile">
+                <div class="icon-display">💚</div>
+            </div>
+
+            <div class="mosaic-tile tile-tall" style="background-image: url('https://alieneverything.github.io/musica/bi.jpg'); background-size: cover; background-position: center;">
+            </div>
+
+            <div class="mosaic-tile">
+                <p class="lyric-text">THE 30TH</p>
+            </div>
+
+            <div class="mosaic-tile">
+                <p class="album-display">HAPPIER THAN EVER</p>
+            </div>
+
+            <div class="mosaic-tile tile-wide">
+                <p class="lyric-text emphasis">WHAT IF IT HAPPENED TO YOU ON A DIFFERENT DAY?</p>
+            </div>
+
+            <div class="mosaic-tile">
+                <div class="icon-display">🌑</div>
+            </div>
+
+            <div class="mosaic-tile" style="background-image: url('https://alieneverything.github.io/musica/bil.jpg'); background-size: cover; background-position: center;">
+            </div>
+
+            <div class="mosaic-tile">
+                <p class="lyric-text">I DON'T KNOW WHY</p>
+            </div>
+
+            <div class="mosaic-tile tile-large">
+                <p class="lyric-text large">I CAN'T IMAGINE A WORLD WITH YOU GONE</p>
+            </div>
+
+            <div class="mosaic-tile">
+                <div class="icon-display">⚡</div>
+            </div>
+
+            <div class="mosaic-tile tile-wide">
+                <p class="album-display">WHEN WE ALL FALL ASLEEP</p>
+            </div>
+
+            <div class="mosaic-tile">
+                <p class="lyric-text emphasis">THE WAY I CRIED</p>
+            </div>
+
+            <div class="mosaic-tile">
+                <div class="icon-display">💔</div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="credits">That's us.</div>
+            <a href="musician4.html" class="back-link">← BACK TO INFO</a>
+        </footer>
+    </div>
+</body>
+</html>
